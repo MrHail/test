@@ -1,0 +1,15 @@
+import pandas as pd
+student_data = pd.DataFrame({
+    'school_code':['001','002','003','001','002','004'],
+    'class':['5','5','6','6','5','6'],
+    'name':['Ram','Shyam','Kelvin','Riya','Hardik','Tina'],
+    'date_of_birth':['15May2002','17May2002','16feb2002','25Sep1998','11May2002','15Aug1997'],
+    'age':[12,12,12,16,12,17],
+    'height':[173,192,186,167,151,159],
+    'weight':[35,32,33,30,31,32],
+    'address':['Panvel','Panvel','Panvel','Belapur','Kalyan','Thane']},
+    index = ['S1','S2','S3','S4','S5','S6'])
+print("Original Dataframe :")
+print(student_data)
+result = student_data.groupby(['school_code','class']).agg({'height':['max','mean'],'weight':['sum','min','count']})
+print(result)
